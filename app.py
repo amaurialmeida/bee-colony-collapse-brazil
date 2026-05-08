@@ -513,6 +513,6 @@ with col_raio2:
 # Rodapé
 st.markdown("---")
 st.markdown(
-    "<p style='text-align: center; color: gray;'>🐝 <b>Observatório do Colapso de Colmeias - Brasil</b><br>Dados do TCC - Pós-Graduação em Apicultura e Meliponicultura<br>📍 Extrema/MG | Guaratinguetá/SP | Turvo/PR | Prudentópolis/PR 🌍</p>",
+    "<p style='text-align: center; color: gray;'>🐝 <b>Trabalho de Conclusão de Curso - Amauri Almeida - Brasil<a href='https://emojitool.com/pt/flag-for-brazil'>🇧🇷</a> </b><br>Dados obtidos do Trabalho de Conclusão do Curso de Gestão Ambiental - FATEC - Faculdade de Tecnologia Deputado Ary Fossen Nota Máxima no ENADE </b><br> Pós-Graduação em Apicultura e Meliponicultura da UNITAU - Universidade de Taubaté <br>📍 Minas Gerais | São Paulo | Paraná | Rio Grande do Sul 🌍</p>",
     unsafe_allow_html=True
 )
