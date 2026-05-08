@@ -20,7 +20,7 @@ st.set_page_config(
 def load_data():
     df = pd.read_csv("data/bees.csv")
 
-    # Normaliza nomes das colunas
+    # Normalizar nomes das colunas
     df.columns = (
         df.columns
         .str.strip()
@@ -146,3 +146,64 @@ with tab_analysis:
     df_pesticide = (
         df.groupby("pesticide")["hives_lost"]
         .sum()
+        .reset_index()
+        .sort_values("hives_lost", ascending=False)
+    )
+
+    fig_pesticide = px.bar(
+        df_pesticide,
+        x="pesticide",
+        y="hives_lost",
+        labels={
+            "pesticide": "Pesticida",
+            "hives_lost": "Colmeias perdidas",
+        },
+    )
+    st.plotly_chart(fig_pesticide, use_container_width=True)
+
+    st.divider()
+
+    st.subheader("Evolução temporal das perdas de colmeias")
+
+    df_year = (
+        df.groupby("year")["hives_lost"]
+        .sum()
+        .reset_index()
+        .sort_values("year")
+    )
+
+    fig_time = px.line(
+        df_year,
+        x="year",
+        y="hives_lost",
+        markers=True,
+        labels={
+            "year": "Ano",
+            "hives_lost": "Colmeias perdidas",
+        },
+    )
+    st.plotly_chart(fig_time, use_container_width=True)
+
+# ============================================================
+# ABA 3 — DADOS BRUTOS
+# ============================================================
+with tab_data:
+    st.subheader("Base de dados completa")
+
+    st.download_button(
+        "⬇️ Baixar CSV",
+        data=df.to_csv(index=False).encode("utf-8"),
+        file_name="bee_colony_collapse_brazil.csv",
+        mime="text/csv",
+    )
+
+    st.dataframe(df, use_container_width=True)
+
+# ─────────────────────────────────────────────────────────────
+# Rodapé
+# ─────────────────────────────────────────────────────────────
+st.divider()
+st.caption(
+    "Projeto acadêmico — Colapso de Colônias de Abelhas no Brasil · "
+    "Baseado em dados de TCC (Fatec Jundiaí) e Pós‑Graduação (Unitau)"
+)
