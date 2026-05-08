@@ -32,7 +32,7 @@ YEARS = [2019, 2020, 2021, 2022, 2023, 2024]
 # ── Carregamento de dados ───────────────────────────────────────────────────
 @st.cache_data
 def load_data():
-    df = pd.read_csv("data/stations.csv")
+    df = pd.read_csv("data/bees.csv")
     return df
 
 df = load_data()
