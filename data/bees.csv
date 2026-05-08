@@ -1,0 +1,10 @@
+producer,state,region,city,latitude,longitude,hives_lost,bees_lost,cause,pesticide,year,source
+Produtor A,Minas Gerais,Sul de Minas Gerais,-21.762,-45.401,3,10700,Fumacê Aedes aegypti,Malathion,2016-2021,TCC Fatec Jundiaí 2022
+Produtor B,São Paulo,Metropolitana de São Paulo,-23.550,-46.633,5,300000,Herbicida mata-mato,Glifosato,2022,TCC Fatec Jundiaí 2022
+Produtor C,Paraná,Central do Paraná,-25.428,-49.271,30,1800000,Pesticida em monocultura,Não identificado,2021,TCC Fatec Jundiaí 2022
+Produtor D,Paraná,Central do Paraná,-25.428,-49.271,300,18000000,Pesticida em monocultura,Não identificado,2019,TCC Fatec Jundiaí 2022
+Apicultor VP,São Paulo,Vale do Paraíba - Guaratinguetá,-22.816,-45.194,10,150000,Pesticida e Glifosato,Glifosato,2021,Pós Unitau 2022
+Apicultor VP,São Paulo,Vale do Paraíba - Pindamonhangaba,-22.924,-45.461,5,75000,Pesticida em monocultura,Não identificado,2020,Pós Unitau 2022
+Apicultor VP,São Paulo,Vale do Paraíba - Taubaté,-23.026,-45.556,8,120000,Fumacê e pesticida,Malathion,2019,Pós Unitau 2022
+Apicultor VP,São Paulo,Vale do Paraíba - São José dos Campos,-23.179,-45.886,3,45000,Herbicida,Glifosato,2018,Pós Unitau 2022
+Apicultor VP,São Paulo,Vale do Paraíba - Redenção da Serra,-23.267,-45.543,2,30000,Pesticida em monocultura,Não identificado,2017,Pós Unitau 2022
