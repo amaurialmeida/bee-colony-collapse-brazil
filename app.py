@@ -510,9 +510,30 @@ with col_raio2:
     </div>
     """, unsafe_allow_html=True)
 
-# Rodapé
+# ============================================================
+# RODAPÉ COM CRÉDITOS
+# ============================================================
 st.markdown("---")
 st.markdown(
-    "<p style='text-align: center; color: gray;'>🐝 <b>Trabalho de Conclusão de Curso - Amauri Almeida - Brasil {chr(0x1F1E7)}{chr(0x1F1F7)}</b><br>Dados obtidos do Trabalho de Conclusão do Curso de Gestão Ambiental - FATEC - Faculdade de Tecnologia Deputado Ary Fossen - NOTA MÁXIMA NO ENADE 2023/2025 </b><br> Pós-Graduação em Apicultura e Meliponicultura da UNITAU - Universidade de Taubaté <br>📍 Minas Gerais | São Paulo | Paraná | Rio Grande do Sul 🌍</p>",
+    f"""
+    <div style="text-align: center; padding: 1rem; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 15px; margin-top: 2rem;">
+        <p style="font-size: 1rem; margin-bottom: 0.5rem; color: #2c5f2d;">
+            🐝 <strong>Trabalho de Conclusão de Curso - Amauri Almeida - Brasil</strong> {chr(0x1F1E7)}{chr(0x1F1F7)}
+        </p>
+        <p style="font-size: 0.85rem; color: #495057; margin-bottom: 0.3rem;">
+            📚 Dados obtidos do Trabalho de Conclusão do Curso de Gestão Ambiental<br>
+            🎓 FATEC - Faculdade de Tecnologia "Deputado Ary Fossen" - <strong>NOTA MÁXIMA NO ENADE 2023/2025</strong> 🏆🥇
+        </p>
+        <p style="font-size: 0.85rem; color: #495057; margin-bottom: 0.3rem;">
+            🐝 Pós-Graduação em Apicultura e Meliponicultura da UNITAU - Universidade de Taubaté
+        </p>
+        <p style="font-size: 0.9rem; color: #2c5f2d; margin-top: 0.5rem;">
+            📍 ⛰️ Minas Gerais | 🏙️ São Paulo | 🌲 Paraná | 🌾 Rio Grande do Sul 🌍
+        </p>
+        <p style="font-size: 0.75rem; color: #6c757d; margin-top: 0.5rem;">
+            © 2026 - Observatório do Colapso de Colmeias - Todos os dados são de pesquisa acadêmica
+        </p>
+    </div>
+    """,
     unsafe_allow_html=True
 )
