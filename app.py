@@ -513,6 +513,6 @@ with col_raio2:
 # Rodapé
 st.markdown("---")
 st.markdown(
-    "<p style='text-align: center; color: gray;'>🐝 <b>Trabalho de Conclusão de Curso - Amauri Almeida - Brasil print("\U0001F1E7\U0001F1F7") </b><br>Dados obtidos do Trabalho de Conclusão do Curso de Gestão Ambiental - FATEC - Faculdade de Tecnologia Deputado Ary Fossen - NOTA MÁXIMA NO ENADE 2023/2025 </b><br> Pós-Graduação em Apicultura e Meliponicultura da UNITAU - Universidade de Taubaté <br>📍 Minas Gerais | São Paulo | Paraná | Rio Grande do Sul 🌍</p>",
+    "<p style='text-align: center; color: gray;'>🐝 <b>Trabalho de Conclusão de Curso - Amauri Almeida - Brasil {chr(0x1F1E7)}{chr(0x1F1F7)}</b><br>Dados obtidos do Trabalho de Conclusão do Curso de Gestão Ambiental - FATEC - Faculdade de Tecnologia Deputado Ary Fossen - NOTA MÁXIMA NO ENADE 2023/2025 </b><br> Pós-Graduação em Apicultura e Meliponicultura da UNITAU - Universidade de Taubaté <br>📍 Minas Gerais | São Paulo | Paraná | Rio Grande do Sul 🌍</p>",
     unsafe_allow_html=True
 )
