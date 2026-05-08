@@ -28,13 +28,17 @@ def load_data():
         .str.replace(" ", "_")
     )
 
-    # Converter coluna year (intervalos ou anos únicos → ano inicial)
+    # Converter coluna year (intervalos viram ano inicial)
     df["year"] = (
         df["year"]
         .astype(str)
         .str.extract(r"(\d{4})")[0]
         .astype(int)
     )
+
+    # Garantir colunas numéricas
+    df["hives_lost"] = pd.to_numeric(df["hives_lost"], errors="coerce").fillna(0)
+    df["bees_lost"] = pd.to_numeric(df["bees_lost"], errors="coerce").fillna(0)
 
     return df
 
@@ -56,11 +60,8 @@ st.divider()
 col1, col2, col3, col4 = st.columns(4)
 
 col1.metric("Casos registrados", len(df))
-col2.metric("Colmeias perdidas", int(df["hives_lost"].sum()))
-col3.metric(
-    "Abelhas perdidas",
-    f"{int(df['bees_lost'].sum()):,}".replace(",", ".")
-)
+col2.metric("Colmeias perdidas", f"{int(df['hives_lost'].sum()):,}".replace(",", "."))
+col3.metric("Abelhas perdidas", f"{int(df['bees_lost'].sum()):,}".replace(",", "."))
 col4.metric("Estados afetados", df["state"].nunique())
 
 st.divider()
@@ -101,7 +102,7 @@ with tab_map:
     with col_info:
         st.info(
             f"**{len(df_filtered)}** casos exibidos · "
-            f"**{int(df_filtered['hives_lost'].sum())}** colmeias perdidas"
+            f"**{int(df_filtered['hives_lost'].sum()):,}** colmeias perdidas".replace(",", ".")
         )
 
     m = folium.Map(
@@ -117,7 +118,7 @@ with tab_map:
             <b>Estado:</b> {row['state']}<br>
             <b>Região:</b> {row['region']}<br>
             <b>Cidade:</b> {row['city']}<br>
-            <b>Colmeias perdidas:</b> {row['hives_lost']}<br>
+            <b>Colmeias perdidas:</b> {int(row['hives_lost']):,}<br>
             <b>Abelhas perdidas:</b> {int(row['bees_lost']):,}<br>
             <b>Causa:</b> {row['cause']}<br>
             <b>Pesticida:</b> {row['pesticide']}<br>
