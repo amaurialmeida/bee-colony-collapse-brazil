@@ -14,13 +14,13 @@ st.set_page_config(
 )
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Carregamento e normalização dos dados
+# Carregamento e padronização dos dados (ANTI‑KEYERROR)
 # ─────────────────────────────────────────────────────────────────────────────
 @st.cache_data
 def load_data():
     df = pd.read_csv("data/bees.csv")
 
-    # Normaliza nomes das colunas para evitar KeyError
+    # Normalização básica dos nomes das colunas
     df.columns = (
         df.columns
         .str.strip()
@@ -30,6 +30,27 @@ def load_data():
         .str.decode("utf-8")
         .str.replace(" ", "_")
     )
+
+    # Mapeamento automático de colunas possíveis → padrão do app
+    column_map = {}
+
+    def map_col(possibles, target):
+        for c in possibles:
+            if c in df.columns:
+                column_map[c] = target
+                return
+
+    map_col(["especie", "species", "especie_abelha", "nome_especie"], "especie")
+    map_col(["tipo", "tipo_abelha", "categoria"], "tipo")
+    map_col(["estado", "uf"], "estado")
+    map_col(["municipio", "cidade"], "municipio")
+    map_col(["latitude", "lat"], "latitude")
+    map_col(["longitude", "lon", "lng"], "longitude")
+    map_col(["qtd_colmeias", "quantidade_colmeias", "colmeias"], "qtd_colmeias")
+    map_col(["ano", "year"], "ano")
+
+    df = df.rename(columns=column_map)
+
     return df
 
 df = load_data()
@@ -45,7 +66,7 @@ st.caption(
 st.divider()
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Métricas principais
+# Métricas
 # ─────────────────────────────────────────────────────────────────────────────
 col1, col2, col3, col4 = st.columns(4)
 
@@ -63,9 +84,9 @@ tab_map, tab_trends, tab_data = st.tabs(
     ["🗺️ Mapa de Colmeias", "📈 Tendências", "📋 Dados Brutos"]
 )
 
-# ─────────────────────────────────────────────────────────────────────────────
+# ════════════════════════════════════════════════════════════════
 # ABA 1 — MAPA
-# ─────────────────────────────────────────────────────────────────────────────
+# ════════════════════════════════════════════════════════════════
 with tab_map:
     st.subheader("Distribuição geográfica das colmeias")
 
@@ -103,40 +124,36 @@ with tab_map:
         )
 
     m = folium.Map(
-        location=[-14.235, -51.925],
+        location=[-14.2, -51.9],
         zoom_start=4,
         tiles="CartoDB positron",
     )
 
     for _, row in df_filtered.iterrows():
-        color = "#f39c12" if row["tipo"].lower().startswith("afri") else "#2ecc71"
-        popup_html = f"""
-        <div style='font-family:sans-serif; width:220px'>
-            <b>Espécie:</b> {row['especie']}<br>
-            <b>Tipo:</b> {row['tipo']}<br>
-            <b>Estado:</b> {row['estado']}<br>
-            <b>Município:</b> {row['municipio']}<br>
-            <b>Colmeias:</b> {row['qtd_colmeias']}<br>
-            <b>Ano:</b> {row['ano']}
-        </div>
+        color = "#f39c12" if "afri" in str(row["tipo"]).lower() else "#2ecc71"
+        popup = f"""
+        <b>Espécie:</b> {row['especie']}<br>
+        <b>Tipo:</b> {row['tipo']}<br>
+        <b>Estado:</b> {row['estado']}<br>
+        <b>Município:</b> {row['municipio']}<br>
+        <b>Colmeias:</b> {row['qtd_colmeias']}<br>
+        <b>Ano:</b> {row['ano']}
         """
         folium.CircleMarker(
-            location=[row["latitude"], row["longitude"]],
+            [row["latitude"], row["longitude"]],
             radius=7,
             color="white",
-            weight=2,
             fill=True,
             fill_color=color,
             fill_opacity=0.85,
-            popup=folium.Popup(popup_html, max_width=260),
+            popup=popup,
         ).add_to(m)
 
     st_folium(m, width=1100, height=520)
-    st.caption("🟢 Abelhas nativas · 🟡 Abelhas africanizadas")
 
-# ─────────────────────────────────────────────────────────────────────────────
+# ════════════════════════════════════════════════════════════════
 # ABA 2 — TENDÊNCIAS
-# ─────────────────────────────────────────────────────────────────────────────
+# ════════════════════════════════════════════════════════════════
 with tab_trends:
     st.subheader("Evolução temporal do número de colmeias")
 
@@ -146,7 +163,7 @@ with tab_trends:
         .reset_index()
     )
 
-    fig_year = px.line(
+    fig = px.line(
         df_year,
         x="ano",
         y="qtd_colmeias",
@@ -155,54 +172,26 @@ with tab_trends:
         labels={
             "ano": "Ano",
             "qtd_colmeias": "Quantidade de colmeias",
-            "tipo": "Tipo de abelha",
-        },
-        title="Colmeias por tipo de abelha ao longo do tempo",
-    )
-
-    st.plotly_chart(fig_year, use_container_width=True)
-    st.divider()
-
-    st.subheader("Distribuição de colmeias por estado")
-
-    df_state = (
-        df.groupby(["estado", "tipo"])["qtd_colmeias"]
-        .sum()
-        .reset_index()
-    )
-
-    fig_state = px.bar(
-        df_state,
-        x="estado",
-        y="qtd_colmeias",
-        color="tipo",
-        labels={
-            "estado": "Estado",
-            "qtd_colmeias": "Quantidade de colmeias",
-            "tipo": "Tipo de abelha",
+            "tipo": "Tipo",
         },
     )
 
-    st.plotly_chart(fig_state, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=True)
 
-# ─────────────────────────────────────────────────────────────────────────────
+# ════════════════════════════════════════════════════════════════
 # ABA 3 — DADOS BRUTOS
-# ─────────────────────────────────────────────────────────────────────────────
+# ════════════════════════════════════════════════════════════════
 with tab_data:
     st.subheader("Base de dados completa")
 
-    search = st.text_input(
-        "🔍 Buscar por espécie, município ou estado",
-        ""
-    )
+    search = st.text_input("🔍 Buscar por espécie, estado ou município")
 
     df_show = df.copy()
-
     if search:
         df_show = df_show[
             df_show["especie"].str.contains(search, case=False) |
-            df_show["municipio"].str.contains(search, case=False) |
-            df_show["estado"].str.contains(search, case=False)
+            df_show["estado"].str.contains(search, case=False) |
+            df_show["municipio"].str.contains(search, case=False)
         ]
 
     st.download_button(
@@ -211,7 +200,6 @@ with tab_data:
         file_name="abelhas_brasil.csv",
         mime="text/csv",
     )
-
     st.dataframe(df_show, use_container_width=True, hide_index=True)
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -220,5 +208,5 @@ with tab_data:
 st.divider()
 st.caption(
     "Projeto acadêmico — Apicultura e Meliponicultura no Brasil · "
-    "Dashboard interativo em Streamlit"
+    "Dashboard interativo desenvolvido em Streamlit"
 )
