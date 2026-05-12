@@ -164,7 +164,7 @@ col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     total_perdas = df_perdas['colmeias'].sum()
-    st.metric("Colmeias perdidas (Agrotóxicos)", f"{total_perdas:,}".replace(',', '.'), 
+    st.metric("Colmeias perdidas (****", f"{total_perdas:,}".replace(',', '.'), 
               delta="2016-2022", delta_color="inverse")
 
 with col2:
