@@ -57,7 +57,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Título
-st.markdown('<div class="main-header"><h1>🐝 Observatório do Colapso de Colmeias - Brasil</h1><p>Monitoramento de mortalidade de abelhas por agrotóxicos e desastres climáticos</p></div>', unsafe_allow_html=True)
+st.markdown('<div class="main-header"><h1>🐝 Observatório do Colapso de Colmeias - Brasil</h1><p>Monitoramento de mortalidade de abelhas por ******* e desastres climáticos</p></div>', unsafe_allow_html=True)
 
 # ============================================================
 # DADOS COMPLETOS DO TCC (CONFORME SUA PLANILHA)
@@ -71,12 +71,12 @@ dados_produtores = [
         "lat": -22.8514, "lon": -46.3178,
         "regiao": "Sul de Minas Gerais",
         "historico": [
-            {"ano": 2016, "colmeias": 1, "abelhas": 1400, "causa": "Caminhão fumacê (Malathion)"},
+            {"ano": 2016, "colmeias": 1, "abelhas": 1400, "causa": "***************"},
             {"ano": 2017, "colmeias": 0, "abelhas": 0, "causa": "Sem perdas"},
             {"ano": 2018, "colmeias": 0, "abelhas": 0, "causa": "Sem perdas"},
             {"ano": 2019, "colmeias": 0, "abelhas": 0, "causa": "Sem perdas"},
-            {"ano": 2020, "colmeias": 1, "abelhas": 3000, "causa": "Caminhão fumacê (Malathion)"},
-            {"ano": 2021, "colmeias": 1, "abelhas": 3600, "causa": "Caminhão fumacê (Malathion)"},
+            {"ano": 2020, "colmeias": 1, "abelhas": 3000, "causa": "***************"},
+            {"ano": 2021, "colmeias": 1, "abelhas": 3600, "causa": "***************"},
             {"ano": 2022, "colmeias": 0, "abelhas": 0, "causa": "Sem perdas"},
         ]
     },
@@ -92,7 +92,7 @@ dados_produtores = [
             {"ano": 2019, "colmeias": 0, "abelhas": 0, "causa": "Sem perdas"},
             {"ano": 2020, "colmeias": 0, "abelhas": 0, "causa": "Sem perdas"},
             {"ano": 2021, "colmeias": 0, "abelhas": 0, "causa": "Sem perdas"},
-            {"ano": 2022, "colmeias": 5, "abelhas": 300000, "causa": "Herbicida (Glifosato)"},
+            {"ano": 2022, "colmeias": 5, "abelhas": 300000, "causa": "*************"},
         ]
     },
     {
@@ -106,7 +106,7 @@ dados_produtores = [
             {"ano": 2018, "colmeias": 0, "abelhas": 0, "causa": "Sem perdas"},
             {"ano": 2019, "colmeias": 0, "abelhas": 0, "causa": "Sem perdas"},
             {"ano": 2020, "colmeias": 0, "abelhas": 0, "causa": "Sem perdas"},
-            {"ano": 2021, "colmeias": 30, "abelhas": 1800000, "causa": "Pulverização agrícola"},
+            {"ano": 2021, "colmeias": 30, "abelhas": 1800000, "causa": "*********"},
             {"ano": 2022, "colmeias": 0, "abelhas": 0, "causa": "Sem perdas"},
         ]
     },
@@ -119,7 +119,7 @@ dados_produtores = [
             {"ano": 2016, "colmeias": 0, "abelhas": 0, "causa": "Sem perdas"},
             {"ano": 2017, "colmeias": 0, "abelhas": 0, "causa": "Sem perdas"},
             {"ano": 2018, "colmeias": 0, "abelhas": 0, "causa": "Sem perdas"},
-            {"ano": 2019, "colmeias": 300, "abelhas": 18000000, "causa": "Pulverização agrícola"},
+            {"ano": 2019, "colmeias": 300, "abelhas": 18000000, "causa": "******"},
             {"ano": 2020, "colmeias": 0, "abelhas": 0, "causa": "Sem perdas"},
             {"ano": 2021, "colmeias": 0, "abelhas": 0, "causa": "Sem perdas"},
             {"ano": 2022, "colmeias": 0, "abelhas": 0, "causa": "Sem perdas"},
@@ -264,7 +264,7 @@ def get_circle_style(total_colmeias):
 # Calcular total por localidade para os círculos proporcionais
 total_por_local = df_perdas.groupby('localidade')['colmeias'].sum().to_dict()
 
-# Adicionar marcadores dos produtores (agrotóxicos)
+# Adicionar marcadores dos produtores (***************)
 for _, dado in df_perdas.iterrows():
     total_local = total_por_local.get(dado['localidade'], dado['colmeias'])
     estilo = get_circle_style(total_local)
@@ -373,7 +373,7 @@ st.markdown("---")
 # ============================================================
 # GRÁFICOS E ANÁLISES DETALHADAS
 # ============================================================
-st.subheader("📊 Análise Temporal das Perdas por Agrotóxico")
+st.subheader("📊 Análise Temporal das Perdas por ******")
 
 # Gráfico de perdas por ano (todos os produtores)
 perdas_ano = df_perdas.groupby('ano')['colmeias'].sum().reset_index()
@@ -430,7 +430,7 @@ with col_graf2:
 # ============================================================
 st.subheader("📋 Detalhamento Completo das Ocorrências")
 
-aba1, aba2, aba3 = st.tabs(["📊 Perdas por Agrotóxico (Detalhado)", "🌊 Rio Grande do Sul (2024)", "📍 Visão por Localidade"])
+aba1, aba2, aba3 = st.tabs(["📊 Perdas por ************* (Detalhado)", "🌊 Rio Grande do Sul (2024)", "📍 Visão por Localidade"])
 
 with aba1:
     st.dataframe(
@@ -505,7 +505,7 @@ with col_raio2:
         • Visualizar a área de influência de cada colônia<br>
         • Identificar sobreposição com áreas de pulverização<br>
         • Planejar melhor a localização de novos apiários<br>
-        • Estimar o alcance da contaminação por agrotóxicos<br><br>
+        • Estimar o alcance da contaminação por **********<br><br>
         <b>Clique nos marcadores 🐝 para ver na prática!</b>
     </div>
     """, unsafe_allow_html=True)
