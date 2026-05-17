@@ -129,8 +129,6 @@ TRANSLATIONS = {
                 "legenda": "Desenho paleolítico · Castellón, Espanha · +10.000 anos"
             },
         ],
-        "field_instrucoes_title": "📌 Como adicionar as fotos ao projeto",
-        "field_instrucoes": "Crie uma pasta <code>assets/</code> na raiz do projeto Streamlit e faça upload das fotos com os nomes exatos listados abaixo de cada card. As imagens serão exibidas automaticamente.",
         "timeline_field_label": "CONTEXTO DAS ENTREVISTAS",
         "timeline_field_items": [
             ("Abr 2022", "Entrevista Produtor A", "Sul de Minas Gerais · WhatsApp e e-mail · Apiário próximo a área residencial afetado por agente vetorial municipal"),
@@ -208,8 +206,6 @@ TRANSLATIONS = {
             {"emoji": "🌍", "titulo": "Cazador de Miel — Rodesia, Sudáfrica · 8.000 años", "desc": "Panel retratando un Cazador de Miel en Rodesia (actual Zimbabue), África del Sur. Arte datado de aproximadamente 8.000 años.", "path": "assets/foto_07_cacador_mel_rodesia.jpg", "legenda": "Cazador de Miel · Rodesia, Sudáfrica · ~8.000 años"},
             {"emoji": "🪨", "titulo": "Pintura Rupestre — Castellón, España · +10.000 años", "desc": "Pintura rupestre descubierta en Castellón, España. Dibujo paleolítico de más de 10.000 años que representa la recolección de miel.", "path": "assets/foto_08_rupestre_castellon.jpg", "legenda": "Dibujo paleolítico · Castellón, España · +10.000 años"},
         ],
-        "field_instrucoes_title": "📌 Cómo añadir las fotos al proyecto",
-        "field_instrucoes": "Cree una carpeta <code>assets/</code> en la raíz del proyecto Streamlit y suba las fotos con los nombres exactos que aparecen debajo de cada tarjeta.",
         "timeline_field_label": "CONTEXTO DE LAS ENTREVISTAS",
         "timeline_field_items": [
             ("Abr 2022", "Entrevista Productor A", "Sur de Minas Gerais · WhatsApp y correo · Apiario próximo a área residencial afectado por agente vectorial municipal"),
@@ -287,8 +283,6 @@ TRANSLATIONS = {
             {"emoji": "🌍", "titulo": "Honey Hunter — Rhodesia, South Africa · 8,000 years", "desc": "Panel depicting a Honey Hunter in Rhodesia (now Zimbabwe), South Africa. Art dated to approximately 8,000 years ago.", "path": "assets/foto_07_cacador_mel_rodesia.jpg", "legenda": "Honey Hunter · Rhodesia, South Africa · ~8,000 years"},
             {"emoji": "🪨", "titulo": "Cave Painting — Castellón, Spain · +10,000 years", "desc": "Cave painting discovered in Castellón, Spain. Paleolithic drawing over 10,000 years old depicting honey collection — one of the earliest human depictions of beekeeping.", "path": "assets/foto_08_rupestre_castellon.jpg", "legenda": "Paleolithic drawing · Castellón, Spain · +10,000 years"},
         ],
-        "field_instrucoes_title": "📌 How to add photos to the project",
-        "field_instrucoes": "Create an <code>assets/</code> folder in the Streamlit project root and upload photos with the exact names shown below each card.",
         "timeline_field_label": "INTERVIEW CONTEXT",
         "timeline_field_items": [
             ("Apr 2022", "Interview Producer A", "Southern Minas Gerais · WhatsApp and email · Apiary near residential area affected by municipal vector agent"),
